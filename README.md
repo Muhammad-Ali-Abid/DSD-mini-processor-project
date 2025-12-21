@@ -101,11 +101,5 @@ This approach simplifies hardware complexity and makes the control logic easier 
 
 ---
 
-## 🧑‍💻 Author
-**Muhammad Ali**  
-RISC-V Processor Design in Verilog
-
----
-
 ## 📜 License
 This project is for educational purposes and is open for learning and experimentation.
