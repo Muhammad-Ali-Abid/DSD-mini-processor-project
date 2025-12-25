@@ -1,0 +1,14 @@
+module Control_unit(
+    input clk,
+    input rst,
+    input start,
+    output fetch,
+    output decode,
+    output execute,
+    output memory,
+    output write_back
+    );
+    
+    controller c1 (.clk(clk) , .rst(rst) , .start(start) , .fetch(fetch) , .decode(decode) , .execute(execute) , .memory(memory) , .write_back(write_back));
+    
+endmodule
