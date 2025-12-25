@@ -1,0 +1,15 @@
+module DesignTop(
+    input clk,
+    input rst,
+    input start
+    );
+    
+    wire fetch;
+    wire decode;
+    wire execute;
+    wire memory;
+    wire write_back;
+        
+    Control_unit cu1 (.clk(clk) , .rst(rst) , .start(start) , .fetch(fetch) , .decode(decode) , .execute(execute) , .memory(memory) , .write_back(write_back));
+    
+endmodule
