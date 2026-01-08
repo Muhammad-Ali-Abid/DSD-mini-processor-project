@@ -9,6 +9,8 @@ module DesignTop(
     wire execute;
     wire memory;
     wire write_back;
+    wire pc_en;
+    wire pc_out;
         
     Control_unit cu1 (.clk(clk) , .rst(rst) , .start(start) , .fetch(fetch) , .decode(decode) , .execute(execute) , .memory(memory) , .write_back(write_back));
     
