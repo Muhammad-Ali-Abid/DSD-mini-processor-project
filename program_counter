@@ -1,5 +1,17 @@
 module program_counter(
     input clk,
-    input rst
+    input rst,
+    input fetch,
+    output reg [4:0] pc_out
     );
+
+      always @ (posedge clk) begin
+        if (rst)
+            pc_out <= 5'b00000;       // Start from instruction 0
+        else if (fetch)
+            pc_out <= pc_out + 1'b1;  // Next instruction
+        else
+            pc_out <= pc_out;         // Hold value
+     end
+
 endmodule
