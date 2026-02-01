@@ -1,12 +1,29 @@
 module Data_memory(
     input clk,
-    input rst
-    );
+    input rst,
+    input memory,            
+    input r_w,
+    input [2:0] addr,   
+    input [15:0] instr,     
+    input [7:0] write_data,
+    output reg [7:0] read_data
+);
+
+    reg [7:0] mem [0:15];
     
-    reg [0:63] mem [0:31];
-        
+    
+
     initial begin
-        $readmemb("D:/University/Semester_3/DSD/Labs/Mini_processor/data_memory.txt" , mem);
+        $readmemb("D:/University/Semester_3/DSD/Labs/Mini_processor/data_memory.txt", mem);
     end
-    
+
+    always @(posedge clk) begin
+        if (memory) begin
+            if (r_w)
+                read_data <= mem[addr];
+            else 
+                mem[addr] <= write_data;
+        end
+    end
+
 endmodule
