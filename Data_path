@@ -1,5 +1,0 @@
-module Data_path(
-    input clk,
-    input rst
-    );
-endmodule
