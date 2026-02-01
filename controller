@@ -42,7 +42,12 @@ module controller(
              decode_st: n_s <= execute_st;
              execute_st: n_s <= memory_st;
              memory_st: n_s <= wb_st;       
-             wb_st: n_s <= fetch_st;
+             wb_st: begin
+                     if(start)
+                        n_s <= fetch_st;
+                     else
+                        n_s <= idle;                
+             end
         endcase
     end
     end
@@ -98,6 +103,13 @@ module controller(
              execute <= 0; 
              memory <= 0;
              write_back <= 1;
+          end  
+          default: begin
+              fetch <= 0;
+              decode <= 0;
+              execute <= 0; 
+              memory <= 0;
+              write_back <= 0;
           end  
       endcase
     end
