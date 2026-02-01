@@ -1,12 +1,36 @@
 module Instruction_memory(
     input clk,
-    input rst
-    );
-    
-    reg [0:63] mem [0:31];
-            
+    input rst,
+    input fetch,
+    input [4:0] pc, 
+    output reg r_w,         
+    output reg [15:0] instr
+);
+
+    reg [15:0] mem [0:31];
+
     initial begin
-        $readmemb("D:/University/Semester_3/DSD/Labs/Mini_processor/Instruction_memory.txt" , mem);
+        $readmemb("Instruction_memory.txt", mem);
+    end
+
+    always @(posedge clk) begin
+        if (rst)
+            instr <= 16'b0;
+        else if (fetch)
+            instr <= mem[pc];
+        else
+            instr <= instr;   
     end
     
+    always @ (posedge clk) begin
+    if(rst)
+        r_w <= 0;
+    else if (instr[3:0] == 0000)
+        r_w <= 1;
+    else
+        r_w <= 0;
+    end
+    
+   
+
 endmodule
